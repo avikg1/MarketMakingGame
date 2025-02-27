@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+  background-color: #3b4252;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position:relative;
+}
+
+.App-wrapper{
+    z-index:10;
+    position: relative;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.background-container {
+  background-color: #3b4252;
+  img: url('./logofull.png');
+  opacity: 10;
+  background-size: contain; /* or contain */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-position: left bottom; /* Position in bottom left */
+}
+
+.underline-on-hover {
+  text-decoration: none;
+}
+
+.underline-on-hover:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+.startButtons {
+    padding-top:5px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: center;
+  gap: 10px; /* Adds some space between items, adjust as needed */
+}
+
+.user-item {
+  margin: 5px; /* Optional: Adds some margin around each item */
+}
