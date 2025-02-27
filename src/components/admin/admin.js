@@ -119,7 +119,7 @@ export default function Admin({ userID, room }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [socket, userID, gameState, roundsRemaining]);
+  }, [socket, userID, gameState, roundsRemaining, evolvePrice, finalizeGame]);
 
   // --------------------------------------------
   //  D) Game Control Functions
