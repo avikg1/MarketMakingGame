@@ -9,7 +9,7 @@ import './App.css';
 import githubIcon from './assets/github-mark.svg';
 
 //import socket
-import SocketContext from "./socket";
+import SocketContext, { socket } from "./socket";
 
 //import notifs
 import toast, { Toaster } from 'react-hot-toast';
@@ -22,9 +22,6 @@ import Admin from './components/admin/admin.js';
 
 
 function App() {
-  //socket from context
-  const socket = React.useContext(SocketContext);
-
   //states
   const [state, setState] = useState(0);
   const [username, setUsername] = useState('');
@@ -95,6 +92,7 @@ function App() {
       toast.error('game already started');
     });
     socket.on('returnToLobby', () => {
+      console.log("Received returnToLobby event in App.js");
       setState(0); // Return to landing page
       toast.success('Game ended. Returned to lobby');
     });
@@ -189,7 +187,7 @@ function App() {
       socket.emit('kickPlayer', id);
       console.log('kickPlayer', id);
     }
-  }, [socket]);
+  }, []);
 
 
   var inputs;
@@ -290,33 +288,35 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="App-wrapper">
-      <header className="App-header">
-        <Toaster
-          toastOptions = {{
-            error: {
-              duration: 1500,
-              style: {
-                background: '#bf616a',
-                color: '#eceff4',
+    <SocketContext.Provider value={socket}>
+      <div className="App">
+        <div className="App-wrapper">
+        <header className="App-header">
+          <Toaster
+            toastOptions = {{
+              error: {
+                duration: 1500,
+                style: {
+                  background: '#bf616a',
+                  color: '#eceff4',
+                },
               },
-            },
-            success: {
-              duration: 1500,
-              style: {
-                background: '#a3be8c',
-                color: '#eceff4',
+              success: {
+                duration: 1500,
+                style: {
+                  background: '#a3be8c',
+                  color: '#eceff4',
+                }
               }
-            }
-          }}
-        />
-        {inputs}
-        <a href="https://github.com/1rv/trader-titans" style={{ position: 'absolute', top: '4%', left: '2%' }}><img src={githubIcon} alt = "github" height='75%' width='75%'/></a>
-      </header>
-      </div>
-    {renderLogo}
-  </div>
+            }}
+          />
+          {inputs}
+          <a href="https://github.com/1rv/trader-titans" style={{ position: 'absolute', top: '4%', left: '2%' }}><img src={githubIcon} alt = "github" height='75%' width='75%'/></a>
+        </header>
+        </div>
+      {renderLogo}
+    </div>
+    </SocketContext.Provider>
   );
 }
 
