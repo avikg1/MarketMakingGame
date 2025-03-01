@@ -81,6 +81,13 @@ export default function Admin({ userID, room }) {
     };
   }, [socket]);
 
+  // Finalize game with current price
+  const finalizeGame = () => {
+    if (gameState !== "ended") {
+      socket.emit("finalizeGame", userID, currentPrice);
+      setGameState("ended");
+    }
+  };
   // 2) A 1-second interval that counts down roundTimeLeft
   //    When it hits 0, we do the next round update
   useEffect(() => {
@@ -124,14 +131,6 @@ export default function Admin({ userID, room }) {
   // --------------------------------------------
   //  D) Game Control Functions
   // --------------------------------------------
-  
-  // Finalize game with current price
-  const finalizeGame = () => {
-    if (gameState !== "ended") {
-      socket.emit("finalizeGame", userID, currentPrice);
-      setGameState("ended");
-    }
-  };
   
   // Return to lobby function
   const returnToLobby = () => {
