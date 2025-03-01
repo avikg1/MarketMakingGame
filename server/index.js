@@ -5,7 +5,7 @@ const http = require('http');
 
 const app = express();
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://marketmakinggame.netlify.app' : 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' ? 'https://market-making-game.netlify.app' : 'http://localhost:3000',
   methods: ['GET', 'POST'],
 }));
 

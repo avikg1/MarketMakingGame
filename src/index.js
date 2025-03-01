@@ -35,7 +35,7 @@ const theme = extendTheme({
 });
 
 const socket = io(
-  process.env.NODE_ENV === 'production' ? `${process.env.REACT_APP_SERVER_URL}` : 'http://localhost:4000',
+  process.env.NODE_ENV === 'production' ? `${process.env.REACT_APP_BACKEND_URL}` : 'http://localhost:4000',
   { autoConnect : false },
 );
 

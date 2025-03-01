@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 
 // Choose the backend URL based on environment
 const ENDPOINT = process.env.NODE_ENV === 'production'
-  ? 'https://your-backend-url.onrender.com'  // Replace with your actual backend URL after deployment
+  ? process.env.REACT_APP_BACKEND_URL  // Replace with your actual backend URL after deployment
   : 'http://localhost:4000';                 // Your local development server
 
 // Create the socket connection
