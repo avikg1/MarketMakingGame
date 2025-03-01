@@ -401,6 +401,21 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("returnToLobby", (adminID, room) => {
+    // Make sure this is the admin of the room
+    if (adminToRoom[adminID] !== room) return;
+    
+    // Get all user IDs in the room and tell them to return to lobby
+    io.to(room).emit("returnToLobby");
+    
+    // Reset room state if needed (optional - depends on your design)
+    if (roomsData[room]) {
+      roomsData[room].started = false;
+      roomsData[room].gameOver = false;
+      // Reset other game state as needed
+    }
+  });
+
   // Player joins the room
   socket.on("join-room", (room, username, userID) => {
     console.log(`>>> join-room called: userID=${userID} username=${username} => room=${room}`);

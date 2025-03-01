@@ -53,9 +53,9 @@ export default function Game({ userID }) {
       console.log("CLIENT GOT newTradePrompt", promptType, round);
       let message = "";
       if (promptType === "sell-call") {
-        message = "Computer is SELLING call at strike 110. Enter your BUY price.";
+        message = "Computer is SELLING call at strike 100. Enter your BUY price.";
       } else {
-        message = "Computer is BUYING call at strike 110. Enter your SELL price.";
+        message = "Computer is BUYING call at strike 100. Enter your SELL price.";
       }
       setRoundPrompt(message);
       setRoundNumber(round);
