@@ -9,6 +9,10 @@ app.use(cors({
   methods: ['GET', 'POST'],
 }));
 
+app.get('/ping', (req, res) => {
+  res.json({ message: 'Server is running' });
+});
+
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
